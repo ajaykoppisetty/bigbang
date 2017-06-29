@@ -69,7 +69,7 @@ public class OkHttpModule {
     if (buildInfo.isDebug() && !buildInfo.isProduction()) {
       HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> Timber.tag("OkHttp").d(message));
       loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-      clientBuilder.addNetworkInterceptor(loggingInterceptor);
+      clientBuilder.addInterceptor(loggingInterceptor);
       CurlInterceptor curlInterceptor = new CurlInterceptor();
       clientBuilder.addNetworkInterceptor(curlInterceptor);
     }
